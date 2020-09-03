@@ -2,31 +2,29 @@
   <div>
     <section class="post-list">
       <PostPreview
-        id="1"
-        :is-admin="isAdmin"
-        thumbnail="https://uiaa-web.azureedge.net/wp-content/uploads/2017/11/RTM19-banner-web.jpg"
-        title="Hello There!"
-        preview-text="This is my first post"/>
-      <PostPreview
-        id="2"
-        :is-admin="isAdmin"
-        thumbnail="https://uiaa-web.azureedge.net/wp-content/uploads/2017/11/RTM19-banner-web.jpg"
-        title="Hello There!"
-        preview-text="This is my second post"/>
-      <PostPreview
-        id="3"
-        :is-admin="isAdmin"
-        thumbnail="https://uiaa-web.azureedge.net/wp-content/uploads/2017/11/RTM19-banner-web.jpg"
-        title="Hello There!"
-        preview-text="This is my third post"/>
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id"
+      :is-admin="isAdmin"
+      :thumbnail="post.thumbnail"
+      :title="post.title"
+      :content="post.content"
+      :previewPost="post.previewText">
+      </PostPreview>
     </section>
   </div>
 </template>
 
 <script>
+  import PostPreview from "./PostPreview";
   export default {
     name: "PostList",
+    components: {PostPreview},
     props: {
+      posts: {
+        type: Array,
+        required: true
+      },
       isAdmin: {
         type: Boolean,
         default: false

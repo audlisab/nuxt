@@ -1,7 +1,7 @@
 <template>
   <div class="admin-new-post-page">
     <section class="new-post-form">
-      <AdminPost :post="loadedPost"/>
+      <AdminPost />
     </section>
   </div>
 </template>
@@ -11,17 +11,11 @@
   import AdminPost from "../../../components/Admin/AdminPostForm";
   export default {
     name: "index",
-    components: {AdminPost},
-    data() {
-      return {
-        loadedPost: {
-          author: "Liza",
-          title: "Title",
-          content: "My awesome content",
-          thumbnail: 'https://www.wiecznatulaczka.pl/wp-content/uploads/2017/09/Sea-To-Summit-ikona-2.jpg'
-        }
-      }
+    layout: 'admin',
+    components: {
+      AdminPost
     }
+
   }
 
 </script>
