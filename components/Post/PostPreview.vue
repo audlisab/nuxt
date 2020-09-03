@@ -6,7 +6,6 @@
                'url(' + thumbnail + ')'}"></div>
       <div class="post-content">
         <h1> {{ title }} </h1>
-        <p> {{ previewText }}</p>
       </div>
     </article>
   </nuxt-link>
@@ -25,10 +24,6 @@
         required: true
       },
       title: {
-        type: String,
-        required: true
-      },
-      previewText: {
         type: String,
         required: true
       },

@@ -1,13 +1,14 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPost :post="loadedPost"/>
+      <AdminPost :post="loadedPost" @submit="onSubmitted"/>
     </section>
   </div>
 </template>
 
 <script>
   import AdminPost from "../../../components/Admin/AdminPostForm";
+  import axios from 'axios'
 
   export default {
     name: "index",
@@ -15,14 +16,22 @@
     components: {
       AdminPost
     },
-    data() {
-      return {
-        loadedPost: {
-          author: "Liza",
-          title: "Title",
-          content: "My awesome content",
-          thumbnail: 'https://www.wiecznatulaczka.pl/wp-content/uploads/2017/09/Sea-To-Summit-ikona-2.jpg'
+    asyncData(context) {
+      return axios
+      .get('https://gpstracker-d7f18.firebaseio.com/posts/'
+        + context.params.postId + '.json')
+      .then(result => {
+        return {
+          loadedPost: { ...result.data, id: context.params.postId}
         }
+      })
+    },
+    methods: {
+      onSubmitted(editedPost) {
+        this.$store.dispatch('editPost', editedPost)
+        .then(() => {
+          this.$router.push('/admin')
+        })
       }
     }
   }

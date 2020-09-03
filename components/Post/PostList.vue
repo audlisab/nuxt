@@ -8,8 +8,7 @@
       :is-admin="isAdmin"
       :thumbnail="post.thumbnail"
       :title="post.title"
-      :content="post.content"
-      :previewPost="post.previewText">
+      :content="post.content">
       </PostPreview>
     </section>
   </div>
