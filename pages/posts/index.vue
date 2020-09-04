@@ -12,7 +12,8 @@
       PostList
     },
 
-    // runs on the client
+    middleware: 'log',
+
     computed: {
       loadedPosts() {
         return this.$store.getters.loadedPosts

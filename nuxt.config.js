@@ -59,11 +59,16 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    baseURL:  process.env.BASE_URL || "https://app-nuxt-b6b87.firebaseio.com/"
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+  },
+  env: {
+    firebaseKeyAPI: 'AIzaSyBvY_nIf0R55G0SVXCuXBST67bHfSKIKPA'
   }
 }

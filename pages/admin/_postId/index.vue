@@ -18,7 +18,7 @@
     },
     asyncData(context) {
       return axios
-      .get('https://gpstracker-d7f18.firebaseio.com/posts/'
+      .get('https://app-nuxt-b6b87.firebaseio.com/posts/'
         + context.params.postId + '.json')
       .then(result => {
         return {
